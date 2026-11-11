@@ -1,0 +1,11 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "web-demo-chart.fullname" . }}-config
+  labels:
+    {{- include "web-demo-chart.labels" . | nindent 4 }}
+data:
+  APP_NAME: {{ .Values.config.appName | quote }}
+  APP_ENV: {{ .Values.config.appEnv | quote }}
+  APP_VERSION: {{ .Values.config.appVersion | quote }}

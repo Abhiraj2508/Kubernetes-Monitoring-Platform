@@ -1,0 +1,29 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: kubernetes-app-alerts
+  namespace: monitoring
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: application-alerts
+      rules:
+        - alert: ApplicationPodRestart
+          expr: increase(kube_pod_container_status_restarts_total{namespace="default",pod=~"(web-demo|helm-demo).*"}[5m]) > 0
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: Application pod restarted
+            description: A web-demo or helm-demo pod has restarted.
+
+        - alert: ApplicationReplicasUnavailable
+          expr: kube_deployment_status_replicas_available{namespace="default",deployment=~"web-demo|helm-demo-web-demo-chart"} < kube_deployment_spec_replicas{namespace="default",deployment=~"web-demo|helm-demo-web-demo-chart"}
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: Application replicas unavailable
+            description: Some desired application replicas are not available.

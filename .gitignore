@@ -1,0 +1,11 @@
+# Kubernetes secrets
+/k8s/secret.yaml
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Local credentials
+*.pem
+*.key
