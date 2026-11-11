@@ -217,3 +217,20 @@ helm list -A
 Computer Science Graduate | Aspiring DevOps Engineer
 
 GitHub: https://github.com/Abhiraj2508
+
+
+## Project Screenshots
+
+### Grafana Monitoring Dashboard
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
+
+### Prometheus Alert — Application Pod Restart
+![Prometheus Alert](screenshots/prometheus-alert.png)
+
+### Alertmanager
+![Alertmanager Alert](screenshots/alertmanager-alert.png)
+
+## Architecture Documentation
+
+For the detailed Kubernetes architecture diagram, see:
+[Architecture Diagram](docs/architecture/architecture.md)
